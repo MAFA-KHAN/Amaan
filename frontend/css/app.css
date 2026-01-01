@@ -212,7 +212,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .detail-item {
@@ -233,7 +233,7 @@
 
 .section-title {
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin: 1.5rem 0 1rem 0;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -249,4 +249,66 @@
     color: var(--text-gray);
     font-size: 0.9rem;
     font-style: italic;
+}
+
+/* Info Items (Facilities & Hazards) */
+.info-item {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: 0.3s;
+    margin-bottom: 8px;
+}
+
+.info-item:hover {
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateX(5px);
+}
+
+.info-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.info-content {
+    flex: 1;
+}
+
+.info-title {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: white;
+}
+
+.info-desc {
+    font-size: 0.8rem;
+    color: var(--text-gray);
+    margin-top: 2px;
+}
+
+.info-badge {
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 800;
+}
+
+.severity-high {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+}
+
+.severity-medium {
+    background: rgba(245, 158, 11, 0.2);
+    color: #f59e0b;
 }

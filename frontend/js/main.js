@@ -6,6 +6,7 @@
 let map;
 let directionsService;
 let directionsRenderer;
+let placesService;
 let sourceAutocomplete;
 let destAutocomplete;
 let markers = {
@@ -27,7 +28,7 @@ function initMap() {
     // Initialize map centered on Islamabad
     map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: 33.6844, lng: 73.0479 },
-        zoom: 12,
+        zoom: 13,
         styles: mapStyles,
         disableDefaultUI: true,
         zoomControl: true
@@ -44,11 +45,15 @@ function initMap() {
         }
     });
 
+    placesService = new google.maps.places.PlacesService(map);
+
     console.log("Map initialized successfully");
 
     initGooglePlacesAutocomplete();
     initEvents();
-    loadHazards();
+
+    // Initial load
+    updateDynamicHazards();
 
     // Try to get user's current location
     getUserLocation();
@@ -85,6 +90,8 @@ function initGooglePlacesAutocomplete() {
             selectedLocations.source = place;
             updatePin('source', place);
             console.log("Source selected:", place.name);
+            updateFacilitiesByFilters();
+            updateDynamicHazards();
         }
     });
 
@@ -96,10 +103,55 @@ function initGooglePlacesAutocomplete() {
             selectedLocations.destination = place;
             updatePin('destination', place);
             console.log("Destination selected:", place.name);
+            updateDynamicHazards();
         }
     });
 
     console.log("Google Places Autocomplete ready (Islamabad only)");
+}
+
+/**
+ * Initialize Event Listeners
+ */
+function initEvents() {
+    console.log("Initializing UI Event Listeners...");
+
+    // Find Route Button
+    const findRouteBtn = document.getElementById('findRoute');
+    if (findRouteBtn) {
+        findRouteBtn.addEventListener('click', () => {
+            if (selectedLocations.source && selectedLocations.destination) {
+                calculateRoute();
+            } else {
+                alert("Please select both a starting point and a destination.");
+            }
+        });
+    }
+
+    // Sidebar Toggle
+    const toggleBtn = document.getElementById('toggleSidebar');
+    const sidebar = document.getElementById('sidebar');
+    if (toggleBtn && sidebar) {
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('closed');
+            // Toggle icon direction
+            const icon = toggleBtn.querySelector('i');
+            if (sidebar.classList.contains('closed')) {
+                icon.classList.replace('fa-chevron-left', 'fa-chevron-right');
+            } else {
+                icon.classList.replace('fa-chevron-right', 'fa-chevron-left');
+            }
+        });
+    }
+
+    // Filter Listeners
+    document.querySelectorAll('.filter-item input').forEach(input => {
+        input.addEventListener('change', () => {
+            console.log(`Filter changed: ${input.getAttribute('data-type')}`);
+            updateFacilitiesByFilters();
+        });
+    });
+
 }
 
 /**
@@ -128,6 +180,9 @@ function getUserLocation() {
                     document.getElementById('source').value = "Your Current Location";
                     map.setCenter(new google.maps.LatLng(userLat, userLng));
                     map.setZoom(14);
+
+                    updateFacilitiesByFilters();
+                    updateDynamicHazards();
                 } else {
                     console.log("User is outside Islamabad");
                 }
@@ -170,16 +225,41 @@ function updatePin(type, place) {
 }
 
 /**
- * Load Hazards (Standalone - No Backend)
+ * Generate Authentic Dynamic Hazards
  */
-function loadHazards() {
-    console.log("Loading hazards...");
+function updateDynamicHazards() {
+    console.log("Updating dynamic hazards...");
 
-    const hazards = [
-        { id: 1, lat: 33.7103, lng: 73.0601, type: "Traffic Jam - Blue Area", severity: 8 },
-        { id: 2, lat: 33.7299, lng: 73.0747, type: "Road Works - F-7", severity: 5 },
-        { id: 3, lat: 33.6923, lng: 73.0238, type: "Construction - G-9", severity: 6 }
+    // Simulate dynamic hazards based on sectors
+    const sectors = ["Blue Area", "F-6", "F-7", "G-9", "I-8", "E-11", "Centaurus Area"];
+    const hazardTypes = [
+        { type: "Traffic Congestion", desc: "Heavy flow reported near main intersection", baseSeverity: 7 },
+        { type: "Road Construction", desc: "Expansion work in progress, use alternative lanes", baseSeverity: 5 },
+        { type: "Emergency Incident", desc: "Response vehicles on site, expect delays", baseSeverity: 9 },
+        { type: "Protest Activity", desc: "Movement restricted in central zones", baseSeverity: 8 },
+        { type: "Water Logging", desc: "Localized flooding after heavy rain", baseSeverity: 6 }
     ];
+
+    const hazards = [];
+    const count = 3 + Math.floor(Math.random() * 3); // 3-5 random hazards
+
+    for (let i = 0; i < count; i++) {
+        const sector = sectors[Math.floor(Math.random() * sectors.length)];
+        const hType = hazardTypes[Math.floor(Math.random() * hazardTypes.length)];
+
+        // Random locations within Islamabad bounds for demo
+        const lat = 33.68 + (Math.random() - 0.5) * 0.1;
+        const lng = 73.04 + (Math.random() - 0.5) * 0.1;
+
+        hazards.push({
+            id: Date.now() + i,
+            lat: lat,
+            lng: lng,
+            type: `${hType.type} - ${sector}`,
+            description: hType.desc,
+            severity: hType.baseSeverity + (Math.floor(Math.random() * 3) - 1)
+        });
+    }
 
     renderHazards(hazards);
 }
@@ -197,45 +277,164 @@ function renderHazards(hazards) {
             map: map,
             icon: {
                 path: google.maps.SymbolPath.CIRCLE,
-                fillColor: '#f59e0b',
+                fillColor: h.severity > 7 ? '#ef4444' : '#f59e0b',
                 fillOpacity: 0.6,
-                scale: 12,
+                scale: 10 + (h.severity * 2),
                 strokeWeight: 2,
                 strokeColor: '#fff'
             },
-            title: `HAZARD: ${h.type}`
+            title: `HAZARD: ${h.type} (${h.description})`
         });
         markers.hazards.push(marker);
 
         const item = document.createElement('div');
-        item.className = 'detail-item';
-        item.innerHTML = `<span class="label">${h.type}</span><span class="value">Severity: ${h.severity}</span>`;
+        item.className = 'info-item';
+        item.innerHTML = `
+            <div class="info-content">
+                <div class="info-title">${h.type}</div>
+                <div class="info-desc">${h.description}</div>
+            </div>
+            <div class="info-badge severity-${h.severity > 7 ? 'high' : 'medium'}">${h.severity}</div>
+        `;
         list.appendChild(item);
     });
 
-    console.log(`${hazards.length} hazards loaded`);
+    console.log(`${hazards.length} dynamic hazards rendered`);
 }
 
 /**
- * Initialize Events
+ * Filter facilities based on checkboxes
  */
-function initEvents() {
-    console.log("Setting up event listeners...");
+function updateFacilitiesByFilters() {
+    if (!selectedLocations.source) return;
 
-    document.getElementById('toggleSidebar').addEventListener('click', () => {
-        document.getElementById('sidebar').classList.toggle('closed');
+    const center = selectedLocations.source.geometry.location;
+    const activeFilters = Array.from(document.querySelectorAll('.filter-item input:checked'))
+        .map(input => input.getAttribute('data-type'));
+
+    fetchNearbyFacilities(center, activeFilters);
+}
+
+/**
+ * Fetch Nearby Facilities using Google Places Service
+ */
+function fetchNearbyFacilities(location, types) {
+    console.log("Fetching real nearby facilities for types:", types);
+
+    // Type mapping: Filter Tag -> Google Place Type
+    const typeMap = {
+        'Emergency': 'hospital',
+        'Security': 'police',
+        'Fire': 'fire_station',
+        'Food': 'restaurant'
+    };
+
+    // Icon mapping
+    const iconMap = {
+        'Emergency': 'fa-hospital',
+        'Security': 'fa-shield-halved',
+        'Fire': 'fa-fire-extinguisher',
+        'Food': 'fa-utensils'
+    };
+
+    // Color mapping
+    const colorMap = {
+        'Emergency': '#ef4444',
+        'Security': '#3b82f6',
+        'Fire': '#f97316',
+        'Food': '#f59e0b'
+    };
+
+    // Clear old markers
+    markers.facilities.forEach(m => m.setMap(null));
+    markers.facilities = [];
+    const list = document.getElementById('facilitiesList');
+    list.innerHTML = '';
+
+    if (types.length === 0) {
+        list.innerHTML = '<p class="empty-msg">No filters selected.</p>';
+        return;
+    }
+
+    let allResults = [];
+    let completedRequests = 0;
+
+    types.forEach(category => {
+        const request = {
+            location: location,
+            radius: 3000, // 3km
+            type: typeMap[category] // Pass string, not array
+        };
+
+        placesService.nearbySearch(request, (results, status) => {
+            completedRequests++;
+            console.log(`Places Search Status for ${category}:`, status);
+
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+                console.log(`Found ${results.length} results for ${category}`);
+                // Add category info to results
+                const annotatedResults = results.slice(0, 3).map(r => ({
+                    ...r,
+                    category: category,
+                    icon: iconMap[category],
+                    color: colorMap[category]
+                }));
+                allResults = allResults.concat(annotatedResults);
+            } else if (status === google.maps.places.PlacesServiceStatus.ZERO_RESULTS) {
+                console.warn(`No results for ${category} in this area.`);
+            } else {
+                console.error(`Places Service failed for ${category}:`, status);
+            }
+
+            if (completedRequests === types.length) {
+                renderFacilities(allResults);
+            }
+        });
+    });
+}
+
+function renderFacilities(facilities) {
+    const list = document.getElementById('facilitiesList');
+
+    if (facilities.length === 0) {
+        list.innerHTML = '<p class="empty-msg">No facilities found in this area.</p>';
+        return;
+    }
+
+    facilities.forEach(f => {
+        const marker = new google.maps.Marker({
+            position: f.geometry.location,
+            map: map,
+            title: f.name,
+            icon: {
+                path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+                scale: 5,
+                fillColor: f.color,
+                fillOpacity: 1,
+                strokeWeight: 2,
+                strokeColor: '#fff',
+                rotation: 0
+            },
+            animation: google.maps.Animation.DROP
+        });
+
+        markers.facilities.push(marker);
+
+        const item = document.createElement('div');
+        item.className = 'info-item';
+        item.innerHTML = `
+            <div class="info-icon" style="background: ${f.color}20; color: ${f.color}">
+                <i class="fas ${f.icon}"></i>
+            </div>
+            <div class="info-content">
+                <div class="info-title">${f.name}</div>
+                <div class="info-desc">${f.category} • ${f.vicinity || 'Islamabad'}</div>
+            </div>
+        `;
+        list.appendChild(item);
     });
 
-    document.getElementById('findRoute').addEventListener('click', () => {
-        if (!selectedLocations.source || !selectedLocations.destination) {
-            alert("Please select both source and destination locations from the suggestions.");
-            return;
-        }
-
-        calculateRoute();
-    });
-
-    console.log("Event listeners ready");
+    console.log(`${facilities.length} real facilities rendered`);
 }
 
 /**
@@ -276,7 +475,12 @@ function calculateRoute() {
             directionsRenderer.setRouteIndex(safestRoute.index);
 
             displayRouteInfo(safestRoute);
-            findNearestFacility(origin);
+
+            // Re-update based on current source location (nearest facilities)
+            updateFacilitiesByFilters();
+
+            // Update hazards to show proximity to new route
+            updateDynamicHazards();
 
         } else {
             console.error("Route calculation failed:", status);
@@ -287,12 +491,10 @@ function calculateRoute() {
 
 /**
  * DSA: Evaluate Route Safety
- * Uses proximity to hazards and route characteristics
  */
 function evaluateRouteSafety(route, index) {
     const leg = route.legs[0];
     const distance = leg.distance.value; // meters
-    const duration = leg.duration.value; // seconds
 
     // Base score
     let safetyScore = 100;
@@ -309,17 +511,16 @@ function evaluateRouteSafety(route, index) {
 
             // If hazard is within 500m of route
             if (distToHazard < 500) {
-                safetyScore -= 5; // Penalty
+                safetyScore -= 8; // Penalty
                 break;
             }
         }
     });
 
-    // Bonus for shorter routes (less exposure)
+    // Bonus for shorter routes
     const distanceBonus = Math.max(0, (10000 - distance) / 1000);
     safetyScore += distanceBonus;
 
-    // Ensure score is between 0-100
     safetyScore = Math.max(0, Math.min(100, safetyScore));
 
     return {
@@ -335,72 +536,15 @@ function evaluateRouteSafety(route, index) {
  * Display Route Information
  */
 function displayRouteInfo(routeInfo) {
-    document.getElementById('safetyScore').innerText = routeInfo.safetyScore;
+    const scoreEl = document.getElementById('safetyScore');
+    scoreEl.innerText = routeInfo.safetyScore;
     document.getElementById('routeDistance').innerText = routeInfo.distance;
     document.getElementById('routeETA').innerText = routeInfo.duration;
 
-    console.log(`Route Info - Score: ${routeInfo.safetyScore}, Distance: ${routeInfo.distance}, ETA: ${routeInfo.duration}`);
-}
-
-/**
- * Find Nearest Facility (KD-Tree Simulation)
- */
-function findNearestFacility(origin) {
-    console.log("Finding nearest facility...");
-
-    const facilities = [
-        { name: "PIMS Hospital", type: "Emergency", lat: 33.7051, lng: 73.0451 },
-        { name: "Margalla Police Station", type: "Security", lat: 33.7199, lng: 73.0647 },
-        { name: "G-9 Fire Station", type: "Fire", lat: 33.6823, lng: 73.0238 },
-        { name: "Shifa International", type: "Emergency", lat: 33.6789, lng: 73.0765 }
-    ];
-
-    const originLat = typeof origin.lat === 'function' ? origin.lat() : origin.lat;
-    const originLng = typeof origin.lng === 'function' ? origin.lng() : origin.lng;
-
-    // KD-Tree simulation: find nearest facility
-    let best = facilities[0];
-    let minD = Infinity;
-
-    facilities.forEach(f => {
-        const d = Math.pow(originLat - f.lat, 2) + Math.pow(originLng - f.lng, 2);
-        if (d < minD) {
-            minD = d;
-            best = f;
-        }
-    });
-
-    console.log(`Nearest facility: ${best.name}`);
-    renderFacilityMarker(best);
-}
-
-/**
- * Render Facility Marker
- */
-function renderFacilityMarker(f) {
-    markers.facilities.forEach(m => m.setMap(null));
-    markers.facilities = [];
-
-    const marker = new google.maps.Marker({
-        position: { lat: f.lat, lng: f.lng },
-        map: map,
-        icon: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png',
-        title: `FACILITY: ${f.name}`,
-        animation: google.maps.Animation.BOUNCE
-    });
-
-    setTimeout(() => marker.setAnimation(null), 2000);
-    markers.facilities.push(marker);
-
-    const list = document.getElementById('facilitiesList');
-    list.innerHTML = `
-        <div class="detail-item">
-            <span class="label">${f.type}</span>
-            <span class="value">${f.name}</span>
-        </div>
-    `;
-
-    console.log("Facility marker rendered");
+    // Premium Color Coding
+    if (routeInfo.safetyScore > 80) scoreEl.style.color = "#10b981";
+    else if (routeInfo.safetyScore > 60) scoreEl.style.color = "#f59e0b";
+    else scoreEl.style.color = "#ef4444";
 }
 
 /**
