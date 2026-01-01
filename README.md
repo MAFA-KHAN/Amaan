@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![AMAAN Logo](assets\animations\Capture.PNG)
+
 
 **Intelligence-First Navigation optimized for Islamabad, Pakistan**
 
