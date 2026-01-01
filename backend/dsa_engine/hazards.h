@@ -5,10 +5,13 @@
 #include <vector>
 #include <map>
 
+
 /**
  * Hazard structure
  * Represents a dangerous or restrictive area in Islamabad
  */
+
+
 struct Hazard {
     int id;
     double latitude;

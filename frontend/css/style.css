@@ -25,6 +25,7 @@ body {
 }
 
 .container {
+
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
@@ -113,7 +114,8 @@ nav a:hover {
 
 /* Hero */
 .hero {
-    padding: 180px 0 100px;
+
+    padding: 140px 0 100px;
     background: radial-gradient(circle at 80% 20%, var(--primary-glow), transparent 40%);
 }
 

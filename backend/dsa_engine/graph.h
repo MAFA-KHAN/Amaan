@@ -8,13 +8,19 @@
 /**
  * Node structure for the Graph
  * Represents a logical point in Islamabad (viva-friendly naming)
- */
+ **/
+
+
+
+
 struct Node {
     int id;
     double latitude;
     double longitude;
     std::string name;
 };
+
+
 
 /**
  * Edge structure for the Graph
