@@ -21,8 +21,11 @@
 
 **AMAAN** (Location Intelligence & Safety Navigation) is a mission-critical navigation system designed to prioritize **human safety** over simple route length. Developed specifically for the complex urban landscape of **Islamabad**, it leverages advanced Data Structures and Algorithms (DSA) to calculate the "Safest Path" by analyzing real-time hazards, emergency facility proximity, and historical safety data.
 
+
 > [!NOTE]
 > While Google Maps provides the base visualization, the **AMAAN DSA Engine** serves as the primary intelligence layer, evaluating every meter of the journey against a rigorous safety matrix.
+
+![AMAAN Demo](assets/animations/Capture.PNG)
 
 ---
 
