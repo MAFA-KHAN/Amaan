@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <header>
         <div class="container nav-container">
@@ -14,7 +16,12 @@
                 <img src="../assets/logo/logo.png" alt="AMAAN Logo">
                 <span>AMAAN</span>
             </div>
-            <nav>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <nav id="nav-menu">
                 <ul>
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
@@ -22,23 +29,23 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
-            <a href="app.html" class="btn btn-primary">Launch App</a>
+            <a href="app.html" class="btn btn-primary launch-btn">Launch App</a>
         </div>
     </header>
 
     <section id="home" class="hero">
         <div class="container hero-container">
             <div class="hero-content">
-                <h1>Navigate Islamabad <span class="highlight">Safely</span> with AMAAN</h1>
-                <p>Safety, intelligence, and awareness in one platform. Experience the next generation of urban navigation designed for Pakistan's capital.</p>
+                <h1>Navigate Your World <span class="highlight">Safely</span> with AMAAN</h1>
+                <p>Safety, intelligence, and awareness in one platform. Experience the next generation of urban
+                    navigation powered by advanced DSA engines.</p>
                 <div class="hero-btns">
                     <a href="app.html" class="btn btn-primary">Start Navigation</a>
                     <a href="#demo" class="btn btn-secondary">Watch Demo</a>
                 </div>
             </div>
             <div class="hero-visual">
-                <div class="abstract-shape"></div>
-                <img src="../assets/logo/logo.png" alt="Safety Concept" class="floating">
+                <img src="../assets/amaan_app_mockup_dark.png" alt="AMAAN App Mockup" class="floating mockup-img">
             </div>
         </div>
     </section>
@@ -48,16 +55,21 @@
             <h2>About AMAAN</h2>
             <div class="about-grid">
                 <div class="about-card">
+                    <div class="card-icon"><i class="fas fa-brain"></i></div>
                     <h3>Intelligence First</h3>
-                    <p>Unlike standard maps, AMAAN uses custom DSA engines to evaluate every turn for safety.</p>
+                    <p>Unlike standard maps, AMAAN uses proprietary algorithms to evaluate every turn for safety and
+                        efficiency.</p>
                 </div>
                 <div class="about-card">
-                    <h3>Islamabad Centric</h3>
-                    <p>Tailored specifically for Islamabad's sectors, landmarks, and local hazard data.</p>
+                    <div class="card-icon"><i class="fas fa-microchip"></i></div>
+                    <h3>Advanced Core</h3>
+                    <p>Built with technical excellence at its heart, ensuring rapid processing of complex spatial data.
+                    </p>
                 </div>
                 <div class="about-card">
+                    <div class="card-icon"><i class="fas fa-route"></i></div>
                     <h3>Pure DSA Engine</h3>
-                    <p>Route optimization using Dijkstra and spatial searches via KD-Trees.</p>
+                    <p>Route optimization using Dijkstra, Yen's Algorithm, and spatial searches via KD-Trees.</p>
                 </div>
             </div>
         </div>
@@ -67,7 +79,7 @@
         <div class="container">
             <h2>See it in Action</h2>
             <div class="video-placeholder">
-                <div class="play-btn"></div>
+                <div class="play-btn"><i class="fas fa-play"></i></div>
                 <p>AMAAN System Demo</p>
             </div>
         </div>
@@ -75,21 +87,39 @@
 
     <section id="contact" class="contact">
         <div class="container">
-            <h2>Contact Us</h2>
-            <div class="contact-info">
-                <p>Email: contact@islamabade9auniversity.edu.pk</p>
-                <p>Phone: +92 51 1234567</p>
-                <p>Built for Islamabad with ❤️</p>
+            <h2>Get in Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>mahamfatimakhan19@gmail.com</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Phone</h3>
+                    <p>+92 312 4567890</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-location-dot"></i>
+                    <h3>Address</h3>
+                    <p>Air University, E-9, Islamabad</p>
+                </div>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 AMAAN Project. All rights reserved. | Built for Islamabad</p>
+            <div class="footer-status">
+                <span class="status-dot"></span>
+                Educational Purpose Only | Properly Launched Coming Soon
+            </div>
+            <p>&copy; 2026 AMAAN Project. All rights reserved. | Made by MAFA</p>
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
     <script src="js/landing.js"></script>
 </body>
+
 </html>

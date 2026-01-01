@@ -152,7 +152,68 @@ function initEvents() {
         });
     });
 
+    // Back to Home Button (Stack DSA)
+    const backBtn = document.getElementById('backToHome');
+    if (backBtn) {
+        backBtn.addEventListener('click', () => {
+            navigationStack.push(window.location.href);
+            console.log('Navigation Stack:', navigationStack.getStack());
+            window.location.href = 'index.html';
+        });
+    }
+
 }
+
+/**
+ * Stack DSA for Navigation History
+ */
+class NavigationStack {
+    constructor() {
+        this.stack = [];
+        this.maxSize = 10; // Limit stack size
+    }
+
+    push(url) {
+        if (this.stack.length >= this.maxSize) {
+            this.stack.shift(); // Remove oldest entry
+        }
+        this.stack.push({
+            url: url,
+            timestamp: new Date().toISOString()
+        });
+        console.log(`[Stack PUSH] ${url}`);
+    }
+
+    pop() {
+        if (this.isEmpty()) {
+            console.log('[Stack] Empty - cannot pop');
+            return null;
+        }
+        const item = this.stack.pop();
+        console.log(`[Stack POP] ${item.url}`);
+        return item;
+    }
+
+    peek() {
+        if (this.isEmpty()) return null;
+        return this.stack[this.stack.length - 1];
+    }
+
+    isEmpty() {
+        return this.stack.length === 0;
+    }
+
+    getStack() {
+        return this.stack;
+    }
+
+    size() {
+        return this.stack.length;
+    }
+}
+
+// Initialize Navigation Stack
+const navigationStack = new NavigationStack();
 
 /**
  * Get User's Current Location
