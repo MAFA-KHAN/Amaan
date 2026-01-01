@@ -109,168 +109,165 @@ nav a:hover {
 
 .btn-secondary:hover {
     background: rgba(255, 255, 255, 0.05);
+}
 
-    /* Hero */
-    .hero {
-        padding: 180px 0 100px;
-        background: radial-gradient(circle at 80% 20%, var(--primary-glow), transparent 40%);
+/* Hero */
+.hero {
+    padding: 180px 0 100px;
+    background: radial-gradient(circle at 80% 20%, var(--primary-glow), transparent 40%);
+}
+
+.hero-container {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.highlight {
+    color: var(--primary);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    color: var(--text-gray);
+    margin-bottom: 2.5rem;
+    max-width: 500px;
+}
+
+.hero-btns {
+    display: flex;
+    gap: 1rem;
+}
+
+.hero-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-visual img {
+    width: 350px;
+    z-index: 2;
+}
+
+.mockup-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.floating {
+    animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+
+    0%,
+    100% {
+        transform: translateY(0);
     }
 
-    .hero-container {
-        display: grid;
-        grid-template-columns: 1.2fr 1fr;
-        gap: 4rem;
-        align-items: center;
-    }
-
-    .hero-content h1 {
-        font-size: 4rem;
-        line-height: 1.1;
-        margin-bottom: 1.5rem;
-    }
-
-    .highlight {
-        color: var(--primary);
-    }
-
-    .hero-content p {
-        font-size: 1.2rem;
-        color: var(--text-gray);
-        margin-bottom: 2.5rem;
-        max-width: 500px;
-    }
-
-    .hero-btns {
-        display: flex;
-        gap: 1rem;
-    }
-
-    .hero-visual {
-        position: relative;
-        display: flex;
-        justify-content: center;
-    }
-
-    .hero-visual img {
-        width: 350px;
-        z-index: 2;
-    }
-
-    .floating {
-        animation: floating 3s ease-in-out infinite;
-    }
-
-    @keyframes floating {
-
-        0%,
-        100% {
-            transform: translateY(0);
-        }
-
-        50% {
-            transform: translateY(-20px);
-        }
-    }
-
-    /* About */
-    .about {
-        padding: 100px 0;
-    }
-
-    .about h2 {
-        text-align: center;
-        font-size: 2.5rem;
-        margin-bottom: 4rem;
-    }
-
-    .about-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
-    }
-
-    .about-card {
-        background: var(--bg-card);
-        padding: 3rem;
-        border-radius: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        transition: 0.3s;
-    }
-
-    .about-card:hover {
-        border-color: var(--primary);
-        transform: translateY(-10px);
-    }
-
-    .about-card h3 {
-        color: var(--primary);
-        margin-bottom: 1rem;
-    }
-
-    /* Demo */
-    .demo {
-        padding: 100px 0;
-        background: rgba(255, 255, 255, 0.02);
-    }
-
-    .demo h2 {
-        text-align: center;
-        margin-bottom: 3rem;
-    }
-
-    .video-placeholder {
-        width: 100%;
-        max-width: 900px;
-        height: 500px;
-        margin: 0 auto;
-        background: #000;
-        border-radius: 20px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .play-btn {
-        width: 80px;
-        height: 80px;
-        background: var(--primary);
-        border-radius: 50%;
-        margin-bottom: 1rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    /* Contact */
-    .contact {
-        padding: 100px 0;
-        text-align: center;
-    }
-
-    .contact h2 {
-        margin-bottom: 2rem;
-    }
-
-    /* Footer */
-    footer {
-        padding: 3rem 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
-        text-align: center;
-        color: var(--text-gray);
+    50% {
+        transform: translateY(-20px);
     }
 }
 
-/* About Card Icons */
+/* About */
+.about {
+    padding: 100px 0;
+}
+
+.about h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 4rem;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.about-card {
+    background: var(--bg-card);
+    padding: 3rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: 0.3s;
+}
+
+.about-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-10px);
+}
+
+.about-card h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
 .card-icon {
     font-size: 2.5rem;
     color: var(--primary);
     margin-bottom: 1.5rem;
 }
 
-/* Contact Grid */
+/* Demo */
+.demo {
+    padding: 100px 0;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.demo h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.video-placeholder {
+    width: 100%;
+    max-width: 900px;
+    height: 500px;
+    margin: 0 auto;
+    background: #000;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.play-btn {
+    width: 80px;
+    height: 80px;
+    background: var(--primary);
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contact */
+.contact {
+    padding: 100px 0;
+    text-align: center;
+}
+
+.contact h2 {
+    margin-bottom: 2rem;
+}
+
 .contact-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -303,7 +300,14 @@ nav a:hover {
     margin-bottom: 0.5rem;
 }
 
-/* Footer Status */
+/* Footer */
+footer {
+    padding: 3rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+    color: var(--text-gray);
+}
+
 .footer-status {
     display: flex;
     align-items: center;
@@ -421,8 +425,6 @@ nav a:hover {
         display: none;
     }
 
-    /* Hide launch btn in header on small mobile if it crowds */
-
     .logo {
         flex: 1;
     }
@@ -439,11 +441,4 @@ nav a:hover {
     #mobile-menu.is-active .bar:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
     }
-}
-
-.mockup-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
