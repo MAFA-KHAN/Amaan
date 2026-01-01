@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMAAN - Navigation Console</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body class="app-body">
+    <div id="map"></div>
+
+    <div class="ui-overlay">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="search-container">
+                <div class="input-group">
+                    <i class="fas fa-location-dot"></i>
+                    <input type="text" id="source" placeholder="Your Location (GPS)" autocomplete="off">
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-map-pin"></i>
+                    <input type="text" id="destination" placeholder="Where to? (Any place in Islamabad)"
+                        autocomplete="off">
+                </div>
+                <button id="findRoute" class="btn btn-primary">Find Route</button>
+            </div>
+
+            <div class="filter-bar">
+                <label class="filter-item">
+                    <input type="checkbox" checked data-type="Emergency">
+                    <span>🚑 Emergency</span>
+                </label>
+                <label class="filter-item">
+                    <input type="checkbox" checked data-type="Security">
+                    <span>👮 Security</span>
+                </label>
+                <label class="filter-item">
+                    <input type="checkbox" checked data-type="Fire">
+                    <span>🔥 Fire</span>
+                </label>
+                <label class="filter-item">
+                    <input type="checkbox" checked data-type="Food">
+                    <span>🍔 Food</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Sidebar Toggle -->
+        <button id="toggleSidebar" class="sidebar-toggle">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+
+        <!-- Sidebar -->
+        <div id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h2>Route Analysis</h2>
+                <div class="logo-small">AMAAN</div>
+            </div>
+
+            <div class="analysis-content">
+                <div class="safety-score-card">
+                    <div class="score-label">Safety Score</div>
+                    <div id="safetyScore" class="score-value">--</div>
+                    <div class="score-info">Calculated via AMAAN DSA Engine</div>
+                </div>
+
+                <div class="route-details">
+                    <div class="detail-item">
+                        <span class="label">Distance</span>
+                        <span id="routeDistance" class="value">-- km</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Estimated Time</span>
+                        <span id="routeETA" class="value">-- mins</span>
+                    </div>
+                </div>
+
+                <div class="section-title">Nearby Facilities</div>
+                <div id="facilitiesList" class="info-list">
+                    <p class="empty-msg">Set route to see facilities.</p>
+                </div>
+
+                <div class="section-title">Active Hazards</div>
+                <div id="hazardsList" class="info-list">
+                    <p class="empty-msg">Scanning Islamabad sectors...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Google Maps API with Places and Geometry libraries -->
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcvX88KRQ_wbrXrNqE1_LwivBVLsgaoIo&libraries=places,geometry"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
