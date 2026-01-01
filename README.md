@@ -4,7 +4,7 @@
 
 
 
-**Intelligence-First Navigation optimized for Islamabad, Pakistan**
+**Intelligence-First Safety Navigation System**
 
 [![Python 3.13+](https://img.shields.io/badge/Python-3.13%2B-blue.svg)](https://www.python.org/)
 [![C++ 17](https://img.shields.io/badge/C%2B%2B-17-orange.svg)](https://isocpp.org/)
@@ -19,7 +19,7 @@
 
 ## 📖 Overview
 
-**AMAAN** (Location Intelligence & Safety Navigation) is a mission-critical navigation system designed to prioritize **human safety** over simple route length. Developed specifically for the complex urban landscape of **Islamabad**, it leverages advanced Data Structures and Algorithms (DSA) to calculate the "Safest Path" by analyzing real-time hazards, emergency facility proximity, and historical safety data.
+**AMAAN** (Location Intelligence & Safety Navigation) is a mission-critical navigation system designed to prioritize **human safety** over simple route length. Built for complex urban environments, it leverages advanced Data Structures and Algorithms (DSA) to calculate the "Safest Path" by analyzing real-time hazards, emergency facility proximity, and historical safety data.
 
 
 > [!NOTE]
@@ -32,7 +32,7 @@
 ## ✨ Core Features
 
 ### 🗺️ Intelligent Navigation
-*   **Predictive Autocomplete**: High-performance indexing of Islamabad landmarks.
+*   **Predictive Autocomplete**: High-performance indexing of urban landmarks and locations.
 *   **Safety-Weighted Routing**: Routes are scored on a scale of 0-100 based on hazard density.
 *   **Dynamic Rerouting**: Real-time adjustment when new hazards are detected.
 
@@ -122,20 +122,20 @@ AMAAN/
 
 ---
 
-## 🤝 Contributing
+## 📄 License
 
-We welcome contributions! Please refer to our [Contribution Guidelines](CONTRIBUTING.md) for more details.
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 📄 License
-
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) for the full text.
-
 <div align="center">
 
-**Built with Precision for the People of Islamabad**
+### Made with ❤️ by MAFA
 
-[Report Issue](https://github.com/MAFA-KHAN/Amaan/issues) • [Request Feature](https://github.com/MAFA-KHAN/Amaan/issues)
+**Built with precision, passion, and purpose.**
+
+---
+
+[Report Issue](https://github.com/MAFA-KHAN/Amaan/issues) • [Request Feature](https://github.com/MAFA-KHAN/Amaan/issues) • [View Documentation](docs/)
 
 </div>
