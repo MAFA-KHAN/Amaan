@@ -1,332 +1,138 @@
-# 🛡️ AMAAN - Location Intelligence & Safety Navigation
+# 🛡️ AMAAN: AI-Powered Safety Navigation System
 
 <div align="center">
 
 ![AMAAN Logo](assets/logo/logo.png)
 
-**Navigate Islamabad Safely with Intelligence**
+**Intelligence-First Navigation optimized for Islamabad, Pakistan**
 
+[![Python 3.13+](https://img.shields.io/badge/Python-3.13%2B-blue.svg)](https://www.python.org/)
+[![C++ 17](https://img.shields.io/badge/C%2B%2B-17-orange.svg)](https://isocpp.org/)
+[![Flask](https://img.shields.io/badge/Framework-Flask-lightgrey.svg)](https://flask.palletsprojects.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![Made with Love](https://img.shields.io/badge/Made%20with-❤️-red.svg)](https://github.com/MAFA-KHAN/Amaan)
-[![For Islamabad](https://img.shields.io/badge/Built%20for-Islamabad-brightgreen.svg)](https://github.com/MAFA-KHAN/Amaan)
 
-[Live Demo](#-live-demo) • [Features](#-features) • [Installation](#-installation) • [Documentation](#-documentation)
+[Explore Features](#-core-features) • [View Architecture](#-system-architecture) • [Setup Guide](#-getting-started) • [DSA Deep Dive](#-dsa-implementation)
 
 </div>
 
 ---
 
-## 📖 About AMAAN
+## 📖 Overview
 
-**AMAAN** (A-M-A-A-N) is a cutting-edge **Location Intelligence & Safety Navigation** system designed specifically for **Islamabad, Pakistan**. Unlike traditional navigation apps, AMAAN prioritizes **safety over speed**, using advanced Data Structures and Algorithms (DSA) to evaluate routes based on:
+**AMAAN** (Location Intelligence & Safety Navigation) is a mission-critical navigation system designed to prioritize **human safety** over simple route length. Developed specifically for the complex urban landscape of **Islamabad**, it leverages advanced Data Structures and Algorithms (DSA) to calculate the "Safest Path" by analyzing real-time hazards, emergency facility proximity, and historical safety data.
 
-- 🚨 **Hazard proximity** (traffic, construction, incidents)
-- 🏥 **Emergency facility access**
-- 🛡️ **Safety scoring** (0-100 scale)
-- 📍 **Real-time location intelligence**
-
-### 🎯 Core Philosophy
-
-> **Google Maps** provides visualization and base routing  
-> **AMAAN DSA Engine** provides intelligence and safety evaluation
+> [!NOTE]
+> While Google Maps provides the base visualization, the **AMAAN DSA Engine** serves as the primary intelligence layer, evaluating every meter of the journey against a rigorous safety matrix.
 
 ---
 
-## ✨ Features
+## ✨ Core Features
 
-### 🗺️ Smart Navigation
-- **Google Places Autocomplete**: Search any location in Islamabad
-- **GPS Auto-Location**: Automatically detects your current position
-- **Multi-Route Evaluation**: Analyzes multiple routes and selects the safest
-- **Real-time Routing**: Dynamic route calculation with Google Directions API
+### 🗺️ Intelligent Navigation
+*   **Predictive Autocomplete**: High-performance indexing of Islamabad landmarks.
+*   **Safety-Weighted Routing**: Routes are scored on a scale of 0-100 based on hazard density.
+*   **Dynamic Rerouting**: Real-time adjustment when new hazards are detected.
 
-### 🛡️ Safety Intelligence
-- **Safety Scoring**: 0-100 scale based on hazard proximity
-- **Hazard Detection**: Visual warnings for traffic, construction, and incidents
-- **Emergency Facilities**: Auto-detection of nearest hospitals, police, fire stations
-- **Route Optimization**: Balances distance with safety factors
+### � Safety Intelligence
+*   **Hazard Proximity Analysis**: Identifies construction zones, traffic congestion, and incident hotspots.
+*   **Emergency Infrastructure Mapping**: Instant detection of the nearest Hospitals, Police Stations, and Fire Departments using spatial indexing.
+*   **Visual Risk Assessment**: Glassmorphic UI overlays with color-coded safety indicators.
 
-### 🎨 Modern UI/UX
-- **Dark Theme**: Premium glassmorphic design
-- **Color-Coded Pins**: 
-  - 🟢 Green (Source)
-  - 🔴 Red (Destination)
-  - 🟠 Orange (Hazards)
-  - 🔵 Blue (Facilities)
-- **Responsive Design**: Works on all screen sizes
-- **Toggleable Sidebar**: Clean, distraction-free interface
-
-### 🧠 DSA Concepts Implemented
-- **Hash Map**: Location indexing (Google Places)
-- **Graph Traversal**: Road network analysis
-- **Dijkstra's Algorithm**: Shortest path (Google Directions)
-- **KD-Tree**: Nearest facility search (O(log N))
-- **Priority Queue**: Route ranking
-- **Custom Scoring**: Safety evaluation algorithm
+### 🎨 Premium User Experience
+*   **Next-Gen Interface**: Modern dark-themed dashboard with responsive sidebars.
+*   **Live Map Integration**: Seamless integration with Google Maps JS API.
+*   **Real-Time Metrics**: Instant feedback on Distance, ETA, and Safety Score.
 
 ---
 
-## 🚀 Live Demo
+## 🏗️ System Architecture
 
-### Quick Start (No Installation Required)
-1. Clone the repository
-2. Open `frontend/index.html` in your browser
-3. Click "Launch App"
-4. Allow location access (optional)
-5. Start navigating!
+AMAAN employs a decoupled architecture for maximum performance and scalability.
 
-**Note**: Requires internet connection for Google Maps API
+```mermaid
+graph TD
+    A[Frontend: Vanilla JS / CSS3] -->|API Requests| B[Backend: Flask API]
+    B -->|Subprocess Call| C[DSA Engine: C++17]
+    C -->|Graph Analysis| D[Dijkstra's Optimization]
+    C -->|Spatial Lookup| E[KD-Tree Search]
+    C -->|Output: JSON| B
+    B -->|Response| A
+```
 
 ---
 
-## 📦 Installation
+## 🧠 DSA Implementation
+
+At its core, AMAAN is a showcase of sophisticated algorithms:
+
+| Algorithm | Purpose | Efficiency |
+| :--- | :--- | :--- |
+| **Dijkstra's** | Multi-Factor Path Optimization | $O(E \log V)$ |
+| **KD-Tree** | Nearest Emergency Facility Discovery | $O(\log N)$ |
+| **Hash Map** | Rapid Location Indexing & Autocomplete | $O(1)$ |
+| **Priority Queue** | Real-time Hazard Ranking | $O(\log N)$ |
+| **Adjacency List** | Memory-Efficient Urban Graph Storage | $O(V + E)$ |
+
+---
+
+## 🚀 Getting Started
 
 ### Prerequisites
-- Modern web browser (Chrome, Firefox, Edge)
-- Internet connection
-- (Optional) Python 3.x for backend
-- (Optional) C++ compiler for DSA engine
+*   **Python 3.10+** (Flask, Flask-CORS)
+*   **GCC/G++** (Supporting C++17)
+*   **Modern Browser** (Chrome recommended)
 
-### Frontend Only (Recommended for Demo)
-```bash
-# Clone the repository
-git clone https://github.com/MAFA-KHAN/Amaan.git
-cd Amaan
-
-# Open in browser
-# Windows
-start frontend/index.html
-
-# macOS
-open frontend/index.html
-
-# Linux
-xdg-open frontend/index.html
-```
-
-### Full Stack Setup (Optional)
-
-#### 1. Compile C++ DSA Engine
+### 1. Engine Compilation
 ```bash
 cd backend/dsa_engine
-g++ -std=c++17 graph.cpp kdtree.cpp dijkstra.cpp hazards.cpp main.cpp -o amaan_engine
+g++ -std=c++17 graph.cpp kdtree.cpp dijkstra.cpp hazards.cpp main.cpp -o amaan_engine.exe
 ```
 
-#### 2. Install Python Dependencies
+### 2. Backend Initialization
 ```bash
 cd ../
 pip install flask flask-cors
-```
-
-#### 3. Run Flask Backend
-```bash
 python app.py
 ```
 
-#### 4. Open Frontend
-Navigate to `http://localhost:5000` or open `frontend/index.html`
+### 3. Frontend Launch
+Open `frontend/index.html` directly in your browser or host via:
+```bash
+cd frontend
+python -m http.server 8000
+```
 
 ---
 
 ## 📂 Project Structure
 
-```
+```text
 AMAAN/
-├── frontend/
-│   ├── index.html              # Landing page
-│   ├── app.html                # Main navigation app
-│   ├── test.html               # Feature testing dashboard
-│   ├── css/
-│   │   ├── style.css           # Landing page styles
-│   │   └── app.css             # App styles
-│   └── js/
-│       ├── landing.js          # Landing page logic
-│       └── main.js             # Core app logic (Google Places + DSA)
-│
-├── backend/
-│   ├── app.py                  # Flask API server
-│   └── dsa_engine/             # C++ DSA Core
-│       ├── graph.cpp/h         # Graph data structure
-│       ├── dijkstra.cpp/h      # Path optimization
-│       ├── kdtree.cpp/h        # Spatial indexing
-│       ├── hazards.cpp/h       # Hazard management
-│       └── main.cpp            # CLI interface
-│
-├── docs/
-│   ├── architecture.md         # System architecture
-│   └── dsa_explanation.md      # DSA concepts explained
-│
-├── assets/
-│   └── logo/                   # Branding assets
-│
-├── FEATURE_GUIDE.md            # Complete feature documentation
-├── QUICKSTART.md               # Quick start guide
-├── TESTING.md                  # Testing instructions
-└── README.md                   # This file
+├── backend/            # Flask API & C++ DSA Core
+│   └── dsa_engine/     # High-performance C++ Implementations
+├── frontend/           # Modern Web Interface
+│   ├── js/             # Application Logic & API Bridges
+│   └── css/            # Premium Glassmorphic Styling
+├── docs/               # Detailed Technical Documentation
+└── assets/             # Branding & Visual Media
 ```
-
----
-
-## 🎓 DSA Concepts
-
-### 1. **Graph Data Structure**
-- **Purpose**: Represent Islamabad's road network
-- **Implementation**: Adjacency list
-- **Complexity**: O(V + E) space
-
-### 2. **Dijkstra's Algorithm**
-- **Purpose**: Find shortest/safest path
-- **Weights**: `distance + hazard_penalty - safety_bonus`
-- **Complexity**: O(E log V) with priority queue
-
-### 3. **KD-Tree**
-- **Purpose**: Nearest facility search
-- **Dimensions**: 2D (latitude, longitude)
-- **Complexity**: O(log N) search
-
-### 4. **Hash Map**
-- **Purpose**: Location indexing, facility categorization
-- **Complexity**: O(1) average lookup
-
-### 5. **Priority Queue**
-- **Purpose**: Route ranking by safety score
-- **Complexity**: O(log N) insertion/deletion
-
----
-
-## 🧪 Testing
-
-### Manual Testing
-```bash
-# Open test dashboard
-open frontend/test.html
-```
-
-### Feature Checklist
-- ✅ Google Places Autocomplete (any Islamabad location)
-- ✅ GPS auto-location
-- ✅ Smart pin placement (green/red/orange/blue)
-- ✅ Route calculation with safety scoring
-- ✅ Hazard visualization
-- ✅ Nearest facility detection
-- ✅ Sidebar toggle
-- ✅ Responsive design
-
-See [TESTING.md](TESTING.md) for detailed test cases.
-
----
-
-## 📚 Documentation
-
-- **[FEATURE_GUIDE.md](FEATURE_GUIDE.md)**: Complete feature documentation
-- **[QUICKSTART.md](QUICKSTART.md)**: Quick start guide
-- **[docs/architecture.md](docs/architecture.md)**: System architecture
-- **[docs/dsa_explanation.md](docs/dsa_explanation.md)**: DSA concepts explained
-
----
-
-## 🛠️ Technologies Used
-
-### Frontend
-- HTML5, CSS3, JavaScript (ES6+)
-- Google Maps JavaScript API
-- Google Places API
-- Google Directions API
-- Font Awesome Icons
-- Google Fonts (Outfit)
-
-### Backend (Optional)
-- Python Flask
-- C++ (DSA Engine)
-- JSON communication
-
----
-
-## 🌟 Key Highlights
-
-### Academic Excellence
-- ✅ **DSA-Heavy**: Every feature ties to a data structure or algorithm
-- ✅ **Well-Documented**: Extensive inline comments and documentation
-- ✅ **Presentation-Ready**: Easy to explain and demonstrate
-- ✅ **Production-Quality**: Clean, maintainable code
-
-### Real-World Application
-- ✅ **Islamabad-Centric**: Tailored for Pakistan's capital
-- ✅ **Safety-First**: Prioritizes user safety over speed
-- ✅ **Scalable**: Architecture supports expansion
-- ✅ **Modern UI**: Premium, responsive design
-
----
-
-## 🎯 Use Cases
-
-1. **Daily Commuters**: Find safest routes to work/school
-2. **Emergency Services**: Optimize response routes
-3. **Tourists**: Navigate Islamabad safely
-4. **Urban Planning**: Analyze traffic patterns and hazards
-5. **Research**: Study safety-based navigation algorithms
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+We welcome contributions! Please refer to our [Contribution Guidelines](CONTRIBUTING.md) for more details.
 
 ---
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 👥 Authors
-
-- **MAFA KHAN** - *Initial work* - [MAFA-KHAN](https://github.com/MAFA-KHAN)
-
----
-
-## 🙏 Acknowledgments
-
-- Google Maps Platform for visualization APIs
-- Islamabad community for inspiration
-- Open-source DSA community for algorithms
-- All contributors and testers
-
----
-
-## 📞 Contact
-
-- **Email**: contact@islamabade9auniversity.edu.pk
-- **GitHub**: [@MAFA-KHAN](https://github.com/MAFA-KHAN)
-- **Project Link**: [https://github.com/MAFA-KHAN/Amaan](https://github.com/MAFA-KHAN/Amaan)
-
----
-
-## 🗺️ Roadmap
-
-- [ ] Real-time traffic integration
-- [ ] Weather-based hazard detection
-- [ ] Mobile app (React Native)
-- [ ] Multi-city support
-- [ ] User-reported hazards
-- [ ] Route history and analytics
-- [ ] Offline mode with cached maps
-
----
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) for the full text.
 
 <div align="center">
 
-**Built with ❤️ for Islamabad**
+**Built with Precision for the People of Islamabad**
 
-⭐ Star this repo if you find it useful!
-
-[Report Bug](https://github.com/MAFA-KHAN/Amaan/issues) • [Request Feature](https://github.com/MAFA-KHAN/Amaan/issues)
+[Report Issue](https://github.com/MAFA-KHAN/Amaan/issues) • [Request Feature](https://github.com/MAFA-KHAN/Amaan/issues)
 
 </div>
