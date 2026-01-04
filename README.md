@@ -20,6 +20,14 @@ AMAAN detects hazards along your path and applies a "Weight Penalty" to dangerou
 
 ---
 
+## ℹ️ About The Project
+
+**AMAAN** (Advanced Multi-Criteria Alert & Navigation) is a proof-of-concept navigation engine built to demonstrate that **Safety** can be quantified and optimized just like distance or time.
+
+In a world where standard GPS apps blindly route users through riots, floods, or high-crime zones, AMAAN introduces a "Safety Layer" that acts as a guardian, ensuring that the path taken is not just the fastest, but the most secure. It represents a shift from *Reactive Navigation* (avoiding traffic) to *Proactive Protection* (avoiding danger).
+
+---
+
 ## 🚀 Key Features
 
 ### 🌟 1. Safety-Aware Routing (The "Safe Path")
@@ -105,6 +113,17 @@ We believe in the power of open source to make the world improved. Contributions
 5.  **Open a Pull Request**
 
 Please ensure your code adheres to standard practices and includes relevant documentation.
+
+---
+
+## 📌 Release & Versioning
+
+We use **[Semantic Versioning](https://semver.org/)** (Can be inferred as `Major.Minor.Patch`) for versioning.
+
+-   **Current Release:** `v1.0.0` (Initial Launch)
+-   **Status:** Stable / Prototype Complete
+
+For the versions available, see the [tags on this repository](https://github.com/MAFA-KHAN/Amaan/tags).
 
 ---
 
