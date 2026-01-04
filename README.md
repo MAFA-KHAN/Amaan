@@ -9,7 +9,14 @@
 > **"Google Maps provides the Eyes. AMAAN provides the Brain."**
 > *~ Safety First, Speed Second.*
 
-AMAAN is a hybrid navigation engine designed for high-risk environments. Unlike standard mapping tools that optimize purely for **Time Efficiency**, AMAAN optimizes for **Safety**. It integrates real-time hazard data (protests, accidents, roadblocks) into a custom C++ Graph Engine to calculate routes that prioritize your security.
+AMAAN detects hazards along your path and applies a "Weight Penalty" to dangerous road segments. If a protest is reported in Sector F-6, the engine automatically finds a safer detour through F-7, even if it adds a few minutes to your ETA.
+
+<div align="center">
+    <img src="assets/animations/Capture.PNG" alt="AMAAN Dashboard Preview" width="90%">
+    <br>
+    <h3><i>"Navigating Uncertainty, Delivering Safety."</i></h3>
+</div>
+<br>
 
 ---
 
@@ -117,8 +124,5 @@ Distributed under the **MIT License**. See `LICENSE` for more information.
 ---
 
 <div align="center">
-    <img src="assets/animations/Capture.PNG" alt="AMAAN Dashboard Preview" width="80%">
-    <br><br>
-    <h3><i>"Navigating Uncertainty, Delivering Safety."</i></h3>
-    <p><b>Made by MAFA with ❤️</b></p>
+    <b>Made by MAFA with ❤️</b>
 </div>
