@@ -110,7 +110,7 @@ Please ensure your code adheres to standard practices and includes relevant docu
 
 ## 🛡️ License
 
-Distributed under the **MIT License**. See `LICENSE` for more information.
+Distributed under the **[MIT License](LICENSE)**. See `LICENSE` for more information.
 
 ---
 
