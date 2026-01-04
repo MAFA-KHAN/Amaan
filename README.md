@@ -88,28 +88,37 @@ MAFA has prepared extensive technical documentation for developers and evaluator
 ---
 
 ## 🤝 Contributing
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+We believe in the power of open source to make the world improved. Contributions to AMAAN are **welcome and encouraged**.
+
+1.  **Fork the Repository**
+2.  **Create your Feature Branch** (`git checkout -b feature/AmazingFeature`)
+3.  **Commit your Changes** (`git commit -m 'Add some AmazingFeature'`)
+4.  **Push to the Branch** (`git push origin feature/AmazingFeature`)
+5.  **Open a Pull Request**
+
+Please ensure your code adheres to standard practices and includes relevant documentation.
 
 ---
 
 ## 🛡️ License
-Distributed under the MIT License. See `LICENSE` for more information.
+
+Distributed under the **MIT License**. See `LICENSE` for more information.
 
 ---
 
 ## 📞 Contact
-MAFA KHAN - [GitHub Profile](https://github.com/MAFA-KHAN)
 
-Project Link: [https://github.com/MAFA-KHAN/Amaan](https://github.com/MAFA-KHAN/Amaan)
+**MAFA KHAN**
+
+- 📧 **Email**: [mahamfatimakhan19@gmail.com](mailto:mahamfatimakhan19@gmail.com)
+- 🐙 **GitHub**: [@MAFA-KHAN](https://github.com/MAFA-KHAN)
 
 ---
 
 <div align="center">
-    <b>Made by MAFA with ❤️</b>
+    <img src="assets/animations/Capture.PNG" alt="AMAAN Dashboard Preview" width="80%">
+    <br><br>
+    <h3><i>"Navigating Uncertainty, Delivering Safety."</i></h3>
+    <p><b>Made by MAFA with ❤️</b></p>
 </div>
