@@ -1,0 +1,68 @@
+/* C++ Engine Verification Styles */
+
+.badge-cpp {
+    background: #10b981;
+    color: white;
+    font-size: 0.65rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-left: 8px;
+    display: inline-block;
+    vertical-align: middle;
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+}
+
+.info-tag {
+    font-size: 0.75rem;
+    color: #10b981;
+    margin-top: 8px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.info-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.info-item.verified-by-cpp {
+    border-left: 4px solid #10b981;
+}
+
+.source-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.7rem;
+    color: #3b82f6;
+    text-decoration: none;
+    margin-top: 4px;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.source-link:hover {
+    color: #60a5fa;
+}
+
+.source-link i {
+    font-size: 0.65rem;
+}
