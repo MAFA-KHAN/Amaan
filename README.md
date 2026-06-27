@@ -81,5 +81,5 @@ The system simulates a live feed from the Islamabad Traffic Police (ITP). Hazard
 ---
 
 <div align="center">
-    <b>Made by MAFA with ❤️</b>
+    <b>Made by MAFA </b>
 </div>
