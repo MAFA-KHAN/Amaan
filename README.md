@@ -1,4 +1,4 @@
-# AMAAN: Advanced Multi-Criteria Alert & Navigation 🛡️🚦
+# AMAAN: Advanced Multi-Criteria Alert & Navigation🛡️🚦
 
 ![Status](https://img.shields.io/badge/Status-Active-success)
 ![Core](https://img.shields.io/badge/Core-C%2B%2B17-blue)
@@ -49,20 +49,6 @@ The system simulates a live feed from the Islamabad Traffic Police (ITP). Hazard
 
 ---
 
-## 📂 Documentation (Deep Dive)
-MAFA has prepared extensive technical documentation for developers and evaluators:
-
-1.  [Frontend Tech Analysis](docs/deep_analysis/1_Frontend_Tech_Analysis.md) - Why Vanilla JS? What is "Glassmorphism"?
-2.  [Backend Tech Analysis](docs/deep_analysis/2_Backend_Tech_Analysis.md) - Why C++? Process Isolation explained.
-3.  [Communication Architecture](docs/deep_analysis/3_System_Communication_Architecture.md) - JSON flow from UI to C++.
-4.  [DSA Core Concepts](docs/deep_analysis/4_DSA_Core_Concepts.md) - From `std::vector` to `Priority Queues`.
-5.  [Google vs. AMAAN](docs/deep_analysis/5_Google_vs_AMAAN_Comparison.md) - The "Eyes vs. Brain" validation.
-6.  [User Flow Journey](docs/deep_analysis/6_User_Flow_Deep_Dive.md) - Step-by-step coordinate tracking.
-7.  [Project Business Report](docs/deep_analysis/7_AMAAN_Project_Report.md) - Objectives & Future Scope.
-8.  [C++ Code Breakdown](docs/deep_analysis/8_Cpp_Engine_Code_Breakdown.md) - Developer's guide to the `.cpp` files.
-
----
-
 ## 🏁 Quick Start
 
 ### Prerequisites
@@ -91,35 +77,6 @@ MAFA has prepared extensive technical documentation for developers and evaluator
 
 4.  **Run the Frontend:**
     Open `frontend/index.html` (or `app.html`) in your browser using a local server (e.g., Live Server).
-
----
-
-## 🤝 Contributing
-
-We believe in the power of open source to make the world improved. Contributions to AMAAN are **welcome and encouraged**.
-
-1.  **Fork the Repository**
-2.  **Create your Feature Branch** (`git checkout -b feature/AmazingFeature`)
-3.  **Commit your Changes** (`git commit -m 'Add some AmazingFeature'`)
-4.  **Push to the Branch** (`git push origin feature/AmazingFeature`)
-5.  **Open a Pull Request**
-
-Please ensure your code adheres to standard practices and includes relevant documentation.
-
----
-
-## 🛡️ License
-
-Distributed under the **[MIT License](LICENSE)**. See `LICENSE` for more information.
-
----
-
-## 📞 Contact
-
-**MAFA KHAN**
-
-- 📧 **Email**: [mahamfatimakhan19@gmail.com](mailto:mahamfatimakhan19@gmail.com)
-- 🐙 **GitHub**: [@MAFA-KHAN](https://github.com/MAFA-KHAN)
 
 ---
 
